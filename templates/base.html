@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Главная {% endblock %}</title>
+    {% block links %}
+    <!-- Подключение Bootsrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    {% endblock %}
+</head>
+
+<body>
+    <!-- Верхний колонтитул -->
+    <header>
+        {% block header %}
+            {% include 'components/_header.html' %}
+        {% endblock %}
+    </header>
+
+        <nav>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            {% block link1 %}{% endblock %}
+          </li>
+          <li class="nav-item">
+            {% block link2 %}{% endblock %}
+          </li>
+          <li class="nav-item">
+            {% block link3 %}{% endblock %}
+          </li>
+          <li class="nav-item">
+            {% block link4 %}{% endblock %}
+          </li>
+        </ul>
+    </nav>
+
+    <h2>{% block h2 %}{% endblock %}</h2>
+    <div>
+        {% block info %}{% endblock %}
+    </div>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Нижний колонтитул -->
+    <footer>
+        {% block footer %}
+            {% include 'components/_footer.html' %}
+        {% endblock %}
+    </footer>
+
+</body>
+</html>
