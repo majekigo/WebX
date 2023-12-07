@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Информация о продукте</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+    <h2>{{ product.name }}</h2>
+    <p>{{ product.description }}</p>
+    <p>Price: ${{ product.price }}</p>
+    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+    <p>Categories: {% for category in product.category.all %}{{ category.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    <p>Tags: {% for tag in product.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+{% endblock %}

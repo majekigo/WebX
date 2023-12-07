@@ -1,7 +1,9 @@
 from django.urls import path
-
-from store.views import home, catalog, product_detail, product_add, product_edit, product_delete, feedback, \
-    user_profile, cart, index
+from .views import (
+    index, home, catalog, product_detail, product_add, product_edit,
+    product_delete, user_profile, cart, feedback, category_list,
+    category_detail, category_add
+)
 
 urlpatterns = [
     path('', index, name='index'),
@@ -14,4 +16,9 @@ urlpatterns = [
     path('profile/', user_profile, name='profile'),
     path('cart/', cart, name='cart'),
     path('feedback/', feedback, name='feedback'),
+
+    # Новые URL для категорий
+    path('categories/', category_list, name='category_list'),
+    path('category/<int:category_id>/', category_detail, name='category_detail'),
+    path('category/add/', category_add, name='category_add'),
 ]
