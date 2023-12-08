@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import ProductForm, CategoryForm
-from .models import Product, Category
+from .models import Product, Category, Tag
 
 
 # Create your views here.
@@ -91,4 +91,8 @@ def category_add(request):
     else:
         form = CategoryForm()
     return render(request, 'category_add.html', {'form': form})
+
+def tag_list(request):
+    tags = Tag.objects.all()
+    return render(request, 'tag_list.html', {'tags': tags})
 

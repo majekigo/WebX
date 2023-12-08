@@ -2,14 +2,11 @@
 
 {% block content %}
     <h2>{{ category.name }}</h2>
-    <p>{{ category.description }}</p>
-    <h3>Products in this category:</h3>
-    {% for product in products %}
-        <div>
-            <h4>{{ product.name }}</h4>
-            <p>{{ product.description }}</p>
-            <p>Price: ${{ product.price }}</p>
-            <a href="{% url 'product_detail' product.id %}">Details</a>
-        </div>
-    {% endfor %}
+    <p>Products in this category:</p>
+    <ul>
+        {% for product in products %}
+            <li><a href="{% url 'product_detail' product_id=product.id %}">{{ product.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'category_list' %}">View All Categories</a></p>
 {% endblock %}
