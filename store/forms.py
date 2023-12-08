@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product, Category
+from .models import Product, Category, Tag
 
 
 class ProductForm(forms.ModelForm):
@@ -13,3 +13,8 @@ class CategoryForm(forms.ModelForm):
         model = Category
         fields = ['name', 'description']
 
+
+class TagForm(forms.ModelForm):
+    class Meta:
+        model = Tag
+        fields = ['name']

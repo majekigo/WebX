@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .forms import ProductForm, CategoryForm
+from .forms import ProductForm, CategoryForm, TagForm
 from .models import Product, Category, Tag
 
 
@@ -100,5 +100,17 @@ def tag_list(request):
 
 def tag_detail(request, tag_id):
     tag = get_object_or_404(Tag, id=tag_id)
-    return render(request, 'tag_detail.html', {'tag': tag})
+    products = Product.objects.filter(tags=tag)
+    return render(request, 'tag_detail.html', {'tag': tag, 'products': products})
+
+
+def tag_add(request):
+    if request.method == 'POST':
+        form = TagForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('tag_list')
+    else:
+        form = TagForm()
+    return render(request, 'tag_add.html', {'form': form})
 

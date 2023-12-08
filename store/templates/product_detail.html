@@ -5,6 +5,10 @@
     <p>{{ product.description }}</p>
     <p>Price: ${{ product.price }}</p>
     <img src="{{ product.image.url }}" alt="{{ product.name }}">
-    <p>Categories: {% for category in product.category.all %}{{ category.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-    <p>Tags: {% for tag in product.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    <p>Tags:
+        {% for tag in product.tags.all %}
+            <a href="{% url 'tag_detail' tag_id=tag.id %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+    <p><a href="{% url 'category_detail' category_id=product.category.id %}">View Category</a></p>
 {% endblock %}
