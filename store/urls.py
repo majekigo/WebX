@@ -2,7 +2,7 @@ from django.urls import path
 from .views import (
     index, home, catalog, product_detail, product_add, product_edit,
     product_delete, user_profile, cart, feedback, category_list,
-    category_detail, category_add, tag_list
+    category_detail, category_add, tag_list, tag_detail
 )
 
 urlpatterns = [
@@ -21,5 +21,6 @@ urlpatterns = [
     path('categories/', category_list, name='category_list'),
     path('category/<int:category_id>/', category_detail, name='category_detail'),
     path('category/add/', category_add, name='category_add'),
+    path('tag/<int:tag_id>/', tag_detail, name='tag_detail'),
     path('tags/', tag_list, name='tag_list'),
 ]

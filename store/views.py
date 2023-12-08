@@ -92,7 +92,13 @@ def category_add(request):
         form = CategoryForm()
     return render(request, 'category_add.html', {'form': form})
 
+
 def tag_list(request):
     tags = Tag.objects.all()
     return render(request, 'tag_list.html', {'tags': tags})
+
+
+def tag_detail(request, tag_id):
+    tag = get_object_or_404(Tag, id=tag_id)
+    return render(request, 'tag_detail.html', {'tag': tag})
 

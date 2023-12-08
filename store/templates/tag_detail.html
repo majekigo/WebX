@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Tag Detail</h1>
+    <p><strong>Name:</strong> {{ tag.name }}</p>
+    <p><strong>Description:</strong> {{ tag.description }}</p>
+    <!-- Дополнительные детали тега, если они есть -->
+
+    <!-- Пример: Ссылка для возврата на список тегов -->
+    <p><a href="{% url 'tag_list' %}">Back to Tag List</a></p>
+{% endblock %}

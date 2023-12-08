@@ -4,7 +4,7 @@
     <h1>Tag List</h1>
     <ul>
         {% for tag in tags %}
-            <li>{{ tag.name }} - {{ tag.description }}</li>
+            <li><a href="{% url 'tag_detail' tag.id %}">{{ tag.name }}</a> - {{ tag.description }}</li>
         {% endfor %}
     </ul>
 {% endblock %}
