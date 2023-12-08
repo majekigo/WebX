@@ -91,3 +91,4 @@ def category_add(request):
     else:
         form = CategoryForm()
     return render(request, 'category_add.html', {'form': form})
+

@@ -5,10 +5,16 @@ class Category(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
 
+    def __str__(self):
+        return self.name
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
@@ -22,6 +28,9 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag)
 
+    def __str__(self):
+        return self.name
+
 
 class Order(models.Model):
     order_number = models.CharField(max_length=10, unique=True)
@@ -31,9 +40,15 @@ class Order(models.Model):
     customer_name = models.CharField(max_length=100)
     products = models.ManyToManyField(Product, through='OrderPosition')
 
+    def __str__(self):
+        return self.order_number
+
 
 class OrderPosition(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     discount = models.DecimalField(max_digits=5, decimal_places=2)
+
+    def __str__(self):
+        return f"{self.order} - {self.product}"
