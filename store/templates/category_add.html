@@ -1,9 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Add Category</h2>
+    <h2>Добавление новой категории:</h2>
     <form method="post">
         {% csrf_token %}
+
+        {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+                <strong>Ошибка!</strong> Пожалуйста, исправьте следующие ошибки:
+                <ul>
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <li>{{ field|title }}: {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
         {{ form.as_p }}
         <button type="submit">Add Category</button>
     </form>
